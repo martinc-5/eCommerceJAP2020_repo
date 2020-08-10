@@ -6,12 +6,12 @@ function validacion() {
 
 if( username == null || username.length == 0 || /^\s+$/.test(username) ) {
       // Si no se cumple la condicion...
-      alert('[ERROR] El campo de nombre de usuario no puede estar vacío');
+      alert('[ERROR] El campo de nombre de usuario no puede estar vacío!');
       return false;
     }
     else if (password == null || password.length == 0 || /^\s+$/.test(password) ) {
         // Si no se cumple la condicion...
-        alert('[ERROR] El campo de contraseña no puede estar vacío');
+        alert('[ERROR] El campo de contraseña no puede estar vacío!');
         return false;
       }
     
