@@ -1,8 +1,9 @@
-function validacion() {
 
-    username = document.getElementById("username").value;
-    password = document.getElementById("password").value;
 
+function validacion() { //funcion que retorna true si los campos no esán vacios, "valida el loggin"
+
+username = document.getElementById("username").value;
+password = document.getElementById("password").value;
 
 if( username == null || username.length == 0 || /^\s+$/.test(username) ) {
       // Si no se cumple la condicion...
@@ -18,9 +19,13 @@ if( username == null || username.length == 0 || /^\s+$/.test(username) ) {
   
     // Si el script ha llegado a este punto, todas las condiciones
     // se han cumplido, por lo que se devuelve el valor true
+    window.localStorage.setItem('logUsuario', username); //Si no hubo problemas se guarda el nombre de usuario y se valida
+    
     return true;
 
   }
+
+  
 
   
 
