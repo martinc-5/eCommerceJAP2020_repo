@@ -45,5 +45,10 @@ var getJSONData = function(url){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById('nombreUsuario').innerHTML ="Bienvenido " + localStorage.getItem('logUsuario') + "!"
+
+  document.getElementById("cerrar").addEventListener("click", function(){
+   window.location.href= "index.html";
+   localStorage.clear();
+});
   
 });
