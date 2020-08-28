@@ -22,7 +22,13 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block badge badge-secondary align-self-center"  id="nombreUsuario" href="#"></a> <!--en init.js se asigna valor con getItem-->
+        <!-- menu desplegable para cerrar sesión -->
+        <div class="dropdown py-2 d-none d-md-inline-block">
+          <a class="py-2 d-none d-md-inline-block badge badge-secondary align-self-center dropdown-toggle"  id="nombreUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"></a> <!--en init.js se asigna valor con getItem-->
+          <div class="dropdown-menu" aria-labelledby="nombreUsuario">
+            <a id="cerrar" href="#" class="dropdown-item mb-2">Cerrar sesión</a>
+          </div>
+        </div>
       </div>
     </nav>
     <main role="main" class="pb-5">
