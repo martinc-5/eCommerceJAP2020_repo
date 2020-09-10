@@ -76,7 +76,22 @@
           <div class="card">
             <h3 class="card-header bg-dark text-center text-white">Galería</h3>
             <div class="card-body">
-              <div id="imagenes" class="carousel slide" data-ride="carousel">
+              <div
+                id="imagenes"
+                class="carousel slide carousel-fade"
+                data-ride="carousel"
+              >
+                <ol class="carousel-indicators">
+                  <li
+                    data-target="#imagenes"
+                    data-slide-to="0"
+                    class="active"
+                  ></li>
+                  <li data-target="#imagenes" data-slide-to="1"></li>
+                  <li data-target="#imagenes" data-slide-to="2"></li>
+                  <li data-target="#imagenes" data-slide-to="3"></li>
+                  <li data-target="#imagenes" data-slide-to="4"></li>
+                </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item active" id="imagen0"></div>
                   <div class="carousel-item" id="imagen1"></div>
