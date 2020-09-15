@@ -55,94 +55,86 @@
       </div>
     </nav>
 
-    <div class="container">
-      <div class="row p-2">
-        <div class="col-12">
-          <h1 class="display-1 text-center" id="productos-name"></h1>
-        </div>
-      </div>
-
-      <div class="row row-content">
-        <div
-          class="col-2 offset-8 text-muted text-center"
-          id="productos-soldCount"
-        ></div>
-        <div class="col-2 text-muted text-center" id="productos-category"></div>
-      </div>
-
-      <!-- carousel de imagenes -->
-      <div class="row">
-        <div class="col-12 col-sm-8">
-          <div class="card">
-            <h3 class="card-header bg-dark text-center text-white">Galería</h3>
-            <div class="card-body">
-              <div
-                id="imagenes"
-                class="carousel slide carousel-fade"
-                data-ride="carousel"
-              >
-                <ol class="carousel-indicators">
-                  <li
-                    data-target="#imagenes"
-                    data-slide-to="0"
-                    class="active"
-                  ></li>
-                  <li data-target="#imagenes" data-slide-to="1"></li>
-                  <li data-target="#imagenes" data-slide-to="2"></li>
-                  <li data-target="#imagenes" data-slide-to="3"></li>
-                  <li data-target="#imagenes" data-slide-to="4"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active" id="imagen0"></div>
-                  <div class="carousel-item" id="imagen1"></div>
-                  <div class="carousel-item" id="imagen2"></div>
-                  <div class="carousel-item" id="imagen3"></div>
-                  <div class="carousel-item" id="imagen4"></div>
-                </div>
-                <a
-                  class="carousel-control-prev"
-                  href="#imagenes"
-                  role="button"
-                  data-slide="prev"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a
-                  class="carousel-control-next"
-                  href="#imagenes"
-                  role="button"
-                  data-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
+    <main role="main" class="pb-5">
+      <div class="container">
+        <div class="row pb-1">
+          <div class="col-12">
+            <h1 class="display-1 text-center" id="productos-name"></h1>
           </div>
         </div>
 
-        <!-- cuerpo de informción -->
-        <div class="col-12 col-sm-4">
-          <div class="col-sm">
+        <div class="row pb-3">
+          <div class="col-12 col-sm-8">
             <div class="card">
               <h3 class="card-header bg-dark text-center text-white">
-                Descripción
+                Galería
               </h3>
               <div class="card-body">
-                <div id="productos-description" class="text-center"></div>
+                <div
+                  id="imagenes"
+                  class="carousel slide carousel-fade"
+                  data-ride="carousel"
+                >
+                  <ol class="carousel-indicators">
+                    <li
+                      data-target="#imagenes"
+                      data-slide-to="0"
+                      class="active"
+                    ></li>
+                    <li data-target="#imagenes" data-slide-to="1"></li>
+                    <li data-target="#imagenes" data-slide-to="2"></li>
+                    <li data-target="#imagenes" data-slide-to="3"></li>
+                    <li data-target="#imagenes" data-slide-to="4"></li>
+                  </ol>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active" id="imagen0"></div>
+                    <div class="carousel-item" id="imagen1"></div>
+                    <div class="carousel-item" id="imagen2"></div>
+                    <div class="carousel-item" id="imagen3"></div>
+                    <div class="carousel-item" id="imagen4"></div>
+                  </div>
+                  <a
+                    class="carousel-control-prev"
+                    href="#imagenes"
+                    role="button"
+                    data-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a
+                    class="carousel-control-next"
+                    href="#imagenes"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <!-- <div class="lead" id="productos-description"></div> -->
-          <br />
-          <div class="col-sm">
+
+          <!-- cuerpo de informción -->
+          <div class="col-12 col-sm-4">
+            <div class="pb-2">
+              <div class="card">
+                <h3 class="card-header bg-dark text-center text-white">
+                  Descripción
+                </h3>
+                <div class="card-body">
+                  <div id="productos-description" class="text-center"></div>
+                </div>
+              </div>
+            </div>
+
             <div class="card">
               <h3 class="card-header bg-dark text-center text-white">Precio</h3>
               <div class="card-body">
@@ -150,112 +142,118 @@
               </div>
             </div>
           </div>
-          <h1 class="display-4 text-center"><div id="productos-cost"></div></h1>
-          <br />
         </div>
-      </div>
 
-      <!--container para mostrar los comentarios-->
-      <!-- <div class="row"></div>
-      <div class="p-2 col-12 col">
-        <div class="card">
-          <h3 class="card-header bg-dark text-center text-white">Valoración</h3> 
-          <div class="card-body">
-            <div id="promedio" class="text-center display-4"></div>
+        <!--container para mostrar los comentarios-->
+        <!-- <div class="row"></div>
+        <div class="p-2 col-12 col">
+          <div class="card">
+            <h3 class="card-header bg-dark text-center text-white">Valoración</h3> 
+            <div class="card-body">
+              <div id="promedio" class="text-center display-4"></div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <h1 class="text-center display-4 col-12 col-sm-6">Comentarios</h1>
+          <div id="promedio" class="text-center display-4 col-12 col-sm-6"></div>
+        </div> -->
+        <div class="row pb-2">
+          <div class="col-12">
+            <div class="card">
+              <h3 class="card-header bg-dark text-center text-white">
+                Comentarios
+              </h3>
+              <div class="card-body">
+                <div class="container p-5" id="listadecomentarios"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div> -->
 
-      <!-- <h1 class="text-center display-4 col-12 col-sm-6">Comentarios</h1>
-        <div id="promedio" class="text-center display-4 col-12 col-sm-6"></div>
-      </div> -->
-
-      <div class="p-2 col-sm">
-        <div class="card">
-          <h3 class="card-header bg-dark text-center text-white">
-            Comentarios
-          </h3>
-          <div class="card-body">
-            <div class="container p-5" id="listadecomentarios"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
         <div class="row">
-          <button
-            type="button"
-            class="btn btn-warning btn-lg btn-block"
-            data-toggle="modal"
-            data-target="#commentModal"
-          >
-            <i class="far fa-comment"></i> Hacer un comentario
-          </button>
+          <div class="col-12">
+            <button
+              type="button"
+              class="btn btn-warning btn-lg btn-block"
+              data-toggle="modal"
+              data-target="#commentModal"
+            >
+              <i class="far fa-comment"></i> Hacer un comentario
+            </button>
+          </div>
         </div>
-      </div>
 
-      <!-- modal para agregar comentario -->
-      <div id="commentModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg" role="content">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Nuevo comentario:</h4>
-              <button type="button" class="close" data-dismiss="modal">
-                &times;
-              </button>
-            </div>
-            <div class="modal-body">
-              <form id="commentForm">
-                <p>
-                  Nombre de usuario:
-                  <a
-                    type="text"
-                    id="usercoment"
-                    class="form-control"
-                    name="usercoment"
-                  ></a>
-                </p>
+        <!-- productos relacionados -->
+        <div class="row">
+          <div class="col-12">
+            <div id="prodRel"></div>
+          </div>
+        </div>
 
-                <p>
-                  <label for="puntuacion">Valoración:</label>
-                  <select
-                    name="puntuacion"
-                    id="puntuacion"
-                    class="custom-select d-block w-100"
-                  >
-                    <option value="1">★</option>
-                    <option value="2">★★</option>
-                    <option value="3">★★★</option>
-                    <option value="4">★★★★</option>
-                    <option value="5">★★★★★</option>
-                  </select>
-                </p>
-                <p>
-                  Comentario: <br /><textarea
-                    id="descripcioncoment"
-                    class="form-control"
-                    name="descripcioncoment"
-                    placeholder="Puedes agregar un comentario si lo deseas"
-                    rows="8"
-                    cols="25"
-                    maxlength="250"
-                  ></textarea>
-                </p>
+        <!-- modal para agregar comentario -->
+        <div id="commentModal" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Nuevo comentario:</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="commentForm">
+                  <p>
+                    Nombre de usuario:
+                    <a
+                      type="text"
+                      id="usercoment"
+                      class="form-control"
+                      name="usercoment"
+                    ></a>
+                  </p>
 
-                <p>
-                  <input
-                    class="btn btn-primary btn-lg"
-                    type="submit"
-                    onclick="guardar()"
-                    data-dismiss="modal"
-                  />
-                </p>
-              </form>
+                  <p>
+                    <label for="puntuacion">Valoración:</label>
+                    <select
+                      name="puntuacion"
+                      id="puntuacion"
+                      class="custom-select d-block w-100"
+                    >
+                      <option value="1">★</option>
+                      <option value="2">★★</option>
+                      <option value="3">★★★</option>
+                      <option value="4">★★★★</option>
+                      <option value="5">★★★★★</option>
+                    </select>
+                  </p>
+                  <p>
+                    Comentario: <br /><textarea
+                      id="descripcioncoment"
+                      class="form-control"
+                      name="descripcioncoment"
+                      placeholder="Puedes agregar un comentario si lo deseas"
+                      rows="8"
+                      cols="25"
+                      maxlength="250"
+                    ></textarea>
+                  </p>
+
+                  <p>
+                    <input
+                      class="btn btn-primary btn-lg"
+                      type="submit"
+                      onclick="guardar()"
+                      data-dismiss="modal"
+                    />
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
     <footer class="text-muted">
       <div class="container">
