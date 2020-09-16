@@ -72,6 +72,31 @@ function mostrar(array) {
   document.getElementById("listadecomentarios").innerHTML = commentlist;
 }
 
+function showRelatedProducts(array) {
+
+	let productosRelHTML = "";
+
+	for (let value of array) {
+
+		let productosRelacionados = products[value];
+
+		productosRelHTML += `
+			<div class="card mr-3" style="width: 20rem;">
+  					<img src="${productosRelacionados.imgSrc}" class="card-img-top">
+  				<div class="card-body">
+    				<h5><strong>${productosRelacionados.name}</strong></h5>
+    				<p><em>${productosRelacionados.description}</em></p>
+  				</div>
+  				<div class="card-body">
+    				<a href="#" class="card-link">Dale un vistazo!</a>
+  				</div>
+			</div>
+		`;
+	};
+
+	document.getElementById("prodRel").innerHTML = productosRelHTML;
+}
+
 //función promedio de puntuación
 
 // function promedioScore(array){ //   falta arreglar los promedios al agregar mas comentarios!!!!!!!!!
@@ -133,9 +158,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   getJSONData(PRODUCTS_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
-      productos = resultObj.data;
-      console.log(productos);
-      
+      products = resultObj.data;
+      showRelatedProducts(productRel);
     }
+    
   });
 });
+
