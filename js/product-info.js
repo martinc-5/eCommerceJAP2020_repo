@@ -163,5 +163,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
     
   });
+
+  //auxiliares para form de comentarios
+  document.getElementById("usercoment").value = localStorage.getItem(
+    "logUsuario"
+  );
+  document.getElementById("usercoment").innerHTML = localStorage.getItem(
+    "logUsuario"
+  );
 });
 
