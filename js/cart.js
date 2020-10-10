@@ -63,7 +63,7 @@ function mostrarCarrito(array) {
 					>
 						<i class="fa fa-heart"></i
 					></a>
-					<a href="#" class="btn btn-light"> Remove</a>
+					<a href="#" class="btn btn-light"> <i class="fas fa-trash-alt"></i></a>
 					</td>
 				</tr>
   </tbody>
@@ -85,24 +85,49 @@ function actualizar(indice) {
 
   document.getElementById(`price${indice}`).innerHTML = totalItem;
   calcularST();
-
-
 }
+
 
 // Función que realiza la suma del subtotal, se ejecuta al actualizar cantidades
 function calcularST() {
 	sumatoria = document.querySelectorAll('.priceItem');
 
-	var st = 0;
+  var st = 0;
+  var envio = 0;
+  var total = 0;
+// Calculo subtotal
   for (let i = 0; i < sumatoria.length; i++) {
     const sumat = sumatoria[i].innerHTML;
     st += parseFloat(sumat);
   }
+  
 document.getElementById("subTotal").innerHTML = "USD"+" "+st;
 
+// Calculo costo envío
+if(document.getElementById("premium").checked) {
+  envio = (st * 0.15).toFixed(2);
 }
-	
 
+if(document.getElementById("standard").checked) {
+  envio = (st * 0.05).toFixed(2);
+}
+
+if(document.getElementById("express").checked) {
+  envio = (st * 0.07).toFixed(2);
+}
+
+document.getElementById("costoEnvio").innerHTML = "USD"+" "+ envio;
+
+// Calculo del total
+total = (parseFloat(st) + parseFloat(envio)).toFixed(2);
+document.getElementById("total").innerHTML = "USD"+" "+ total;
+}
+
+
+$('a[data-toggle="list"]').on('shown.bs.tab', function (e) {
+  e.target // newly activated tab
+  e.relatedTarget // previous active tab
+})
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -116,4 +141,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	  calcularST();
     }
   });
+
+  
 });

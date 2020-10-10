@@ -90,85 +90,273 @@
     <div class="container my-3">
       <div class="row">
         <main class="col-md-9">
-          <div class="card">
-            
-                <div id="itemsCarrito"></div>
-             
+          <!-- Inicio acordion -->
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header bg-dark text-center " id="headingOne">
+                
+                  <button
+                    class="btn btn-link text-white "
+                    data-toggle="collapse"
+                    data-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    <h4>Mi Carrito</h4>
+                  </button>
+                
+              </div>
 
-            <div class="card-body border-top">
-              <a href="#" class="btn btn-primary float-md-right">
-                Ir a pagar <i class="fa fa-chevron-right"></i>
-              </a>
-              <a href="categories.html" class="btn btn-light">
-                <i class="fa fa-chevron-left"></i> Seguir comprando
-              </a>
-            </div>
-          </div>
-          <!-- card.// -->
-        </main>
-        <!-- col.// -->
-        <aside class="col-md-3">
-
-          <div class="card">
-            <div class="card-body">
-              <dl class="dlist-align">
-                <dt>Método de envío</dt>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                  <label class="form-check-label" for="exampleRadios1">
-                    <strong>Premium</strong> (2-5 días) - Costo del 15% sobre el subtotal.
-                    <br>
-                  </label>
+              <div
+                id="collapseOne"
+                class="collapse show"
+                aria-labelledby="headingOne"
+              >
+                <div class="card-body">
+                  <div id="itemsCarrito"></div>
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                  <label class="form-check-label" for="exampleRadios2">
-                    <strong>Express</strong>(5-8 días) - Costo del 7% sobre el subtotal.
-                    <br>
-                  </label>
+              </div>
+            </div>
+            <!-- cierre carrito -->
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button
+                    class="btn btn-link collapsed"
+                    data-toggle="collapse"
+                    data-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  >
+                    Información de envío
+                  </button>
+                </h5>
+              </div>
+              <div
+                id="collapseTwo"
+                class="collapse"
+                aria-labelledby="headingTwo"
+              >
+              <div class="row">
+                <div class="col-md-4">
+                <div class="card-body">
+                  <div id="envio">
+                    <input
+                      type="radio"
+                      id="premium"
+                      name="envio"
+                      value="1"
+                      onclick="calcularST()"
+                    />
+                    <label for="premium"
+                      ><strong> Premium (2-5 días)</strong></label
+                    >
+                    <small class="text-muted"
+                      ><br />Costo del 15% sobre el subtotal</small
+                    ><br />
+                    <input
+                      type="radio"
+                      id="express"
+                      name="envio"
+                      value="2"
+                      onclick="calcularST()"
+                    />
+                    <label for="express"
+                      ><strong> Express (5-8 días)</strong></label
+                    >
+                    <small class="text-muted"
+                      ><br />Costo del 7% sobre el subtotal</small
+                    ><br />
+                    <input
+                      type="radio"
+                      id="standard"
+                      name="envio"
+                      value="3"
+                      onclick="calcularST()"
+                      checked
+                    />
+                    <label for="standard"
+                      ><strong> Standard (12 a 15 días)</strong></label
+                    >
+                    <small class="text-muted"
+                      ><br />Costo del 5% sobre el subtotal.</small
+                    >
+                  </div>
+                                   
+                </div>
+                
+              </div>
+              <!-- cierre input tipo de envio -->
+              <div class="col-md-7 my-3 mx-1">
+                <form>
+                  <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                      <label for="validationDefault01">Nombre</label>
+                      <input type="text" class="form-control" id="validationDefault01" placeholder="Ej: Homero" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="validationDefault02">Apellido</label>
+                      <input type="text" class="form-control" id="validationDefault02" placeholder="Simpson" required>
+                    </div>
+                    
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                      <label for="validationDefault03">Calle</label>
+                      <input type="text" class="form-control" id="validationDefault03" placeholder="Ej: Av. Siempreviva" required>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                      <label for="validationDefault04">Número</label>
+                      <input type="text" class="form-control" id="validationDefault04" placeholder="742" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationDefault05">Departamento</label>
+                      <input type="text" class="form-control" id="validationDefault05" placeholder="Montevideo" required>
+                    </div>
+                  </div>
                   
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-                  <label class="form-check-label" for="exampleRadios3">
-                    <strong>Standard</strong> (12 a 15 días) - Costo del 5% sobre el subtotal.
-
-                  </label>
-                </div>
-              </dl>
-             
-              
+                  <button class="btn btn-primary" type="submit">Guardar</button>
+                </form>
+              </div>
+              <!-- cierre form direccion envio -->
+              </div>
+              </div>
             </div>
-            <!-- card-body.// -->
+            <!-- cierre envio -->
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button
+                    class="btn btn-link collapsed"
+                    data-toggle="collapse"
+                    data-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    Método de pago
+                  </button>
+                </h5>
+              </div>
+              <div
+                id="collapseThree"
+                class="collapse"
+                aria-labelledby="headingThree"
+                data-parent="#accordion"
+              >
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="list-tarjeta-list" data-toggle="list" href="#list-tarjeta" role="tab" aria-controls="tarjeta"><i class="fas fa-credit-card mr-2"></i>Tarjeta de crédito</a>
+                        <a class="list-group-item list-group-item-action" id="list-banco-list" data-toggle="list" href="#list-banco" role="tab" aria-controls="banco"><i class="fas fa-landmark mr-2"></i>Transferencia bancaria</a>
+                      </div>
+                    </div>
+                    <div class="col-8">
+                      <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="list-tarjeta" role="tabpanel" aria-labelledby="list-tarjeta-list">
+                          <form>
+                            <div class="form-row">
+                              <div class="col-md-6 mb-3">
+                                <label for="nombreTarjeta">Nombre del propietario</label>
+                                <input type="text" class="form-control" id="nombreTarjeta" placeholder="Ej: Homero Simpson" required>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="fechaVenc">Vencimiento</label>
+                                <input type="month" class="form-control" id="fechaVenc" placeholder="Ej: Homero Simpson" required>
+                              </div>
+                              
+                            </div>
+                            <div class="form-row">
+                              <div class="col-md-6 mb-3">
+                                <label for="numTatjeta">Número de tarjeta</label>
+                                <input type="text" class="form-control" id="numTatjeta" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                              </div>
+                              <div class="col-md-2 mb-3">
+                                <label for="ccv">CCV</label>
+                                <input type="text" class="form-control" id="ccv" placeholder="123" required>
+                                
+                              </div>
+                            </div>
+                            
+                              <div class="form-row">
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                              </div>
+                          </form>
+                         
+                        </div>
+                        
+                        <div class="tab-pane fade" id="list-banco" role="tabpanel" aria-labelledby="list-banco-list">
+                          <div class="card bg-light mb-3" >
+                            <div class="card-header">Tenga en cuenta la siguiente información</div>
+                            <div class="card-body">
+                              <h5 class="card-title"><strong> Cuenta número 123-456-789, BROU</strong></h5>
+                              <p class="card-text">Transferir el importe total a ese numero de cuenta y <strong> envíar el comprobante a transferecnias@emercado.com </strong> indicando nombre y apellido en el asunto.
+                              </p>
+                              <div class="form-check mb-2 mr-sm-2">
+                                <input class="form-check-input" type="checkbox" id="deAcuerdo">
+                                <label class="form-check-label" for="deAcuerdo">
+                                  Estoy de acuerdo
+                                </label>
+                              </div>
+                              
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- cierre metodos de pago -->
           </div>
-          <!-- card .// -->
+          <!-- Fin acordion -->
           
-          <div class="card">
+
+          <div class="card-body border">
+            
+            <a href="#" class="btn btn-primary float-md-right">
+              Ir a pagar <i class="fa fa-chevron-right"></i>
+            </a>
+            <a href="categories.html" class="btn btn-secondary">
+              <i class="fa fa-chevron-left"></i> Seguir comprando
+            </a>
+          </div>
+
+          
+        </main>
+        <!-- cierre cuerpo de informacion principal -->
+        
+        <aside class="col-md-3">
+          <div class="sticky">
+          <div class="card my-1">
+            <h4 class="card-header bg-dark text-center text-white">Resumen</h4>
             <div class="card-body">
               <dl class="dlist-align">
                 <dt>Sub total:</dt>
-                <dd class="text-right" id="subTotal">USD </dd>
+                <dd class="text-right" id="subTotal"></dd>
               </dl>
               <dl class="dlist-align">
                 <dt>Costo de envío:</dt>
-                <dd class="text-right">USD</dd>
+                <dd class="text-right" id="costoEnvio">USD</dd>
               </dl>
               <dl class="dlist-align">
                 <dt>Total a pagar:</dt>
-                <dd class="text-right h5"><strong></strong></dd>
+                <dd class="text-right h5"><strong id="total"></strong></dd>
               </dl>
               <hr />
               <p class="text-center mb-3">
                 <img src="img/mediosPago.png" height="75" />
               </p>
             </div>
-            <!-- card-body.// -->
+            
           </div>
-          <!-- card .// -->
+         
+        </div>
         </aside>
-        <!-- col.// -->
+        <!-- cierre de resumen -->
       </div>
     </div>
+  
 
     <div id="spinner-wrapper">
       <div class="lds-ring">
@@ -185,3 +373,5 @@
     <script src="js/cart.js"></script>
   </body>
 </html>
+
+
