@@ -4,7 +4,6 @@ function mostrarCarrito(array) {
 
   for (let i = 0; i < array.length; i++) {
     let itemCarrito = array[i];
-    
 
     if (itemCarrito.currency == "UYU") {
       itemCarrito.unitCost = (itemCarrito.unitCost / 40).toFixed(2);
@@ -36,13 +35,15 @@ function mostrarCarrito(array) {
 					</figure>
 					</td>
 					<td>
-						<input id="cantidad${i}" type="number" value=${
+						<input class="cantidadItem" id="cantidad${i}" type="number" value=${
       itemCarrito.count
     } min="0" max="1000" step="1" onchange="actualizar(${i});"/>
 					</td>
 					<td>
 					<div class="price-wrap">
-						<var class="price">${itemCarrito.currency} <var class="priceItem" id="price${i}">${
+						<var class="price">${
+              itemCarrito.currency
+            } <var class="priceItem" id="price${i}">${
       itemCarrito.count * itemCarrito.unitCost
     }</var></var><br>
 						<small class="text-muted" >${
@@ -70,8 +71,24 @@ function mostrarCarrito(array) {
   </table>
   `;
   }
+  // Si hay un carrito guardado en local storage trae ese carrito
+   if (localStorage["guardarCarrito"] != null) {
+    document.getElementById("itemsCarrito").innerHTML = JSON.parse(localStorage["guardarCarrito"]);
 
+    for (let i = 0; i < array.length; i++) {
+    document.getElementById(`cantidad${i}`).value = JSON.parse(localStorage[`guardarCantidad${i}`]);
+    }
+     } 
+
+    //  Si no hay un carrito guardado en localStorage crea uno nuevo y lo guarda en localStorage
+    else { 
   document.getElementById("itemsCarrito").innerHTML = listadoCarrito;
+  localStorage["guardarCarrito"] = JSON.stringify($("#itemsCarrito").html());
+
+  for (let i = 0; i < array.length; i++) {
+     localStorage[`guardarCantidad${i}`] = document.getElementById(`cantidad${i}`).value;
+    }
+    }
 }
 
 // Función que se ejecuta al cambiar la cantidad de un producto, calcula el precio total del item
@@ -85,49 +102,58 @@ function actualizar(indice) {
 
   document.getElementById(`price${indice}`).innerHTML = totalItem;
   calcularST();
+  localStorage["guardarCarrito"] = JSON.stringify($("#itemsCarrito").html());
+  localStorage[`guardarCantidad${indice}`] = cantidad;
+  // Se guardan modificaciones hechas al carrito en localStorage
 }
 
-
-// Función que realiza la suma del subtotal, se ejecuta al actualizar cantidades
+// Función que realiza la suma del subtotal, se ejecuta al actualizar cantidades. También actualiza cantidades en badge de carrito
 function calcularST() {
-	sumatoria = document.querySelectorAll('.priceItem');
-
+  sumatoria = document.querySelectorAll(".priceItem");
+  cantidades = document.querySelectorAll(".cantidadItem");
+  
   var st = 0;
   var envio = 0;
   var total = 0;
-// Calculo subtotal
+  var cdad = 0;
+  // Calculo subtotal
   for (let i = 0; i < sumatoria.length; i++) {
     const sumat = sumatoria[i].innerHTML;
     st += parseFloat(sumat);
   }
+
+  document.getElementById("subTotal").innerHTML = "USD" + " " + st;
+
+  // Calculo costo envío
+  if (document.getElementById("premium").checked) {
+    envio = (st * 0.15).toFixed(2);
+  }
+
+  if (document.getElementById("standard").checked) {
+    envio = (st * 0.05).toFixed(2);
+  }
+
+  if (document.getElementById("express").checked) {
+    envio = (st * 0.07).toFixed(2);
+  }
+
+  document.getElementById("costoEnvio").innerHTML = "USD" + " " + envio;
+
+  // Calculo del total
+  total = (parseFloat(st) + parseFloat(envio)).toFixed(2);
+  document.getElementById("total").innerHTML = "USD" + " " + total;
+
+  // Calculo de cantidades para actualizad badge
+  for (let i = 0; i < cantidades.length; i++) {
+    const canti = cantidades[i].valueAsNumber;
+    cdad += canti;
+  }
   
-document.getElementById("subTotal").innerHTML = "USD"+" "+st;
-
-// Calculo costo envío
-if(document.getElementById("premium").checked) {
-  envio = (st * 0.15).toFixed(2);
-}
-
-if(document.getElementById("standard").checked) {
-  envio = (st * 0.05).toFixed(2);
-}
-
-if(document.getElementById("express").checked) {
-  envio = (st * 0.07).toFixed(2);
-}
-
-document.getElementById("costoEnvio").innerHTML = "USD"+" "+ envio;
-
-// Calculo del total
-total = (parseFloat(st) + parseFloat(envio)).toFixed(2);
-document.getElementById("total").innerHTML = "USD"+" "+ total;
+  localStorage["cantidadTotal"] = cdad;
+  document.getElementById("badgeCarrito").innerHTML = cdad;
 }
 
 
-$('a[data-toggle="list"]').on('shown.bs.tab', function (e) {
-  e.target // newly activated tab
-  e.relatedTarget // previous active tab
-})
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -137,10 +163,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (resultObj.status === "ok") {
       itemsCarrito = resultObj.data.articles;
       console.log(itemsCarrito);
-	  mostrarCarrito(itemsCarrito);
-	  calcularST();
+      mostrarCarrito(itemsCarrito);
+      calcularST();
     }
   });
-
-  
 });
