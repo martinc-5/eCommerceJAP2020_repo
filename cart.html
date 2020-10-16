@@ -74,8 +74,9 @@
               ><i class="far fa-user"></i> Mi perfil</a
             >
             <a class="py-2 d-none d-md-inline-block dropdown-item" href="#"
-              ><i class="fas fa-shopping-cart"></i> Mi carrito <span class="badge badge-danger" id="badgeCarrito"></span></a
-            >
+              ><i class="fas fa-shopping-cart"></i> Mi carrito
+              <span class="badge badge-danger" id="badgeCarrito"></span
+            ></a>
             <a
               id="cerrar"
               href="#"
@@ -184,24 +185,24 @@
                   </div>
                   <!-- cierre input tipo de envio -->
                   <div class="col-md-7 my-3 mx-1">
-                    <form>
+                    <form onsubmit="guardarDatosEnvio()">
                       <div class="form-row">
                         <div class="col-md-6 mb-3">
-                          <label for="validationDefault01">Nombre</label>
+                          <label for="inputNombre">Nombre</label>
                           <input
                             type="text"
                             class="form-control"
-                            id="validationDefault01"
+                            id="inputNombre"
                             placeholder="Ej: Homero"
                             required
                           />
                         </div>
                         <div class="col-md-6 mb-3">
-                          <label for="validationDefault02">Apellido</label>
+                          <label for="inputApellido">Apellido</label>
                           <input
                             type="text"
                             class="form-control"
-                            id="validationDefault02"
+                            id="inputApellido"
                             placeholder="Simpson"
                             required
                           />
@@ -209,31 +210,31 @@
                       </div>
                       <div class="form-row">
                         <div class="col-md-6 mb-3">
-                          <label for="validationDefault03">Calle</label>
+                          <label for="inputCalle">Calle</label>
                           <input
                             type="text"
                             class="form-control"
-                            id="validationDefault03"
+                            id="inputCalle"
                             placeholder="Ej: Av. Siempreviva"
                             required
                           />
                         </div>
                         <div class="col-md-2 mb-3">
-                          <label for="validationDefault04">Número</label>
+                          <label for="inputNumero">Número</label>
                           <input
                             type="text"
                             class="form-control"
-                            id="validationDefault04"
+                            id="inputNumero"
                             placeholder="742"
                             required
                           />
                         </div>
                         <div class="col-md-4 mb-3">
-                          <label for="validationDefault05">Departamento</label>
+                          <label for="inputDepartamento">Departamento</label>
                           <input
                             type="text"
                             class="form-control"
-                            id="validationDefault05"
+                            id="inputDepartamento"
                             placeholder="Montevideo"
                             required
                           />
@@ -254,9 +255,13 @@
           <!-- Fin acordion -->
 
           <div class="card-body border">
-            <a href="#" class="btn btn-primary float-md-right">
+            <button
+              
+              class="btn btn-primary float-md-right"
+              id="finalizarCompra"
+            >
               Finalizar compra <i class="fa fa-chevron-right"></i>
-            </a>
+            </button>
             <a href="categories.html" class="btn btn-secondary">
               <i class="fa fa-chevron-left"></i> Seguir comprando
             </a>
@@ -294,10 +299,11 @@
                   data-toggle="modal"
                   data-target="#metodoModal"
                 >
-                <i class="fas fa-piggy-bank"></i> Método de pago
+                  <i class="fas fa-piggy-bank"></i> Método de pago
                 </button>
-
-                
+                <hr />
+                <div id="infoEnvio"></div>
+                <div id="infoPago"></div>
               </div>
             </div>
           </div>
@@ -311,11 +317,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Elija un método de pago</h4>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-            >
+            <button type="button" class="close" data-dismiss="modal">
               &times;
             </button>
           </div>
@@ -323,11 +325,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-4">
-                  <div
-                    class="list-group"
-                    id="list-tab"
-                    role="tablist"
-                  >
+                  <div class="list-group" id="list-tab" role="tablist">
                     <a
                       class="list-group-item list-group-item-action active"
                       id="list-tarjeta-list"
@@ -335,8 +333,8 @@
                       href="#list-tarjeta"
                       role="tab"
                       aria-controls="tarjeta"
-                      ><i class="fas fa-credit-card mr-2"></i
-                      >Tarjeta de crédito</a
+                      ><i class="fas fa-credit-card mr-2"></i>Tarjeta de
+                      crédito</a
                     >
                     <a
                       class="list-group-item list-group-item-action"
@@ -345,8 +343,8 @@
                       href="#list-banco"
                       role="tab"
                       aria-controls="banco"
-                      ><i class="fas fa-landmark mr-2"></i
-                      >Transferencia bancaria</a
+                      ><i class="fas fa-landmark mr-2"></i>Transferencia
+                      bancaria</a
                     >
                   </div>
                 </div>
@@ -358,65 +356,64 @@
                       role="tabpanel"
                       aria-labelledby="list-tarjeta-list"
                     >
-                      <form>
-                        <div class="form-row">
-                          <div class="col-md-6 mb-3">
-                            <label for="nombreTarjeta"
-                              >Nombre del propietario</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="nombreTarjeta"
-                              placeholder="Ej: Homero Simpson"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-6 mb-3">
-                            <label for="fechaVenc"
-                              >Vencimiento</label
-                            >
-                            <input
-                              type="month"
-                              class="form-control"
-                              id="fechaVenc"
-                              placeholder="Ej: Homero Simpson"
-                              required
-                            />
-                          </div>
-                        </div>
-                        <div class="form-row">
-                          <div class="col-md-6 mb-3">
-                            <label for="numTatjeta"
-                              >Número de tarjeta</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="numTatjeta"
-                              placeholder="XXXX-XXXX-XXXX-XXXX"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-2 mb-3">
-                            <label for="ccv">CCV</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="ccv"
-                              placeholder="123"
-                              required
-                            />
-                          </div>
-                        </div>
+                      <form onsubmit="guardarDatosTarjeta()">
+                        <div class="card bg-light mb-3">
+                          <div class="card-body">
+                            <div class="form-row">
+                              <div class="col-md-6 mb-3">
+                                <label for="nombreTarjeta"
+                                  >Nombre del propietario</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="nombreTarjeta"
+                                  placeholder="Ej: Homero Simpson"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="fechaVenc">Vencimiento</label>
+                                <input
+                                  type="month"
+                                  class="form-control"
+                                  id="fechaVenc"
+                                  placeholder="Ej: Homero Simpson"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="col-md-6 mb-3">
+                                <label for="numTatjeta"
+                                  >Número de tarjeta</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="numTatjeta"
+                                  placeholder="XXXX-XXXX-XXXX-XXXX"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-2 mb-3">
+                                <label for="ccv">CCV</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="ccv"
+                                  placeholder="123"
+                                  required
+                                />
+                              </div>
+                            </div>
 
-                        <div class="form-row">
-                          <button
-                            class="btn btn-primary"
-                            type="submit"
-                          >
-                            Guardar
-                          </button>
+                            <div class="form-row mx-1">
+                              <button class="btn btn-primary" type="submit">
+                                Guardar
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </form>
                     </div>
@@ -432,45 +429,41 @@
                           Tenga en cuenta la siguiente información
                         </div>
                         <div class="card-body">
-                          <h5 class="card-title">
-                            <strong>
-                              Cuenta número 123-456-789,
-                              BROU</strong
-                            >
-                          </h5>
-                          <p class="card-text">
-                            Transferir el importe total a ese numero
-                            de cuenta y
-                            <strong>
-                              envíar el comprobante a
-                              transferencias@emercado.com
-                            </strong>
-                            indicando nombre y apellido en el
-                            asunto.
-                          </p>
-                          <div class="form-check mb-2 mr-sm-2">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              id="deAcuerdo"
-                              required
-                            />
-                            <label
-                              class="form-check-label"
-                              for="deAcuerdo"
-                            >
-                              Estoy de acuerdo
-                            </label>
-                            
-                          </div>
-                          <div class="form-row">
-                            <button
-                            class="btn btn-primary"
-                            type="submit"
-                          >
-                           Aceptar
-                          </button>
-                          </div>
+                          <form onsubmit="guardarDatosTransf()">
+                            <h5 class="card-title">
+                              <strong> Cuenta número 123-456-789, BROU</strong>
+                            </h5>
+                            <p class="card-text">
+                              Transferir el importe total a ese numero de cuenta
+                              y
+                              <strong>
+                                envíar el comprobante a
+                                transferencias@emercado.com
+                              </strong>
+                              indicando nombre y apellido en el asunto.
+                            </p>
+                            <div class="form-check mb-2 mr-sm-2">
+                              <label class="form-check-label" for="deAcuerdo">
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  id="deAcuerdo"
+                                  onchange="activarBoton(this);"
+                                />
+                                Estoy de acuerdo
+                              </label>
+                            </div>
+                            <div class="form-row">
+                              <button
+                                class="btn btn-primary"
+                                type="submit"
+                                id="botonAceptarTransf"
+                                disabled
+                              >
+                                Aceptar
+                              </button>
+                            </div>
+                          </form>
                         </div>
                       </div>
                     </div>
@@ -483,8 +476,6 @@
       </div>
     </div>
 
-
-
     <div id="spinner-wrapper">
       <div class="lds-ring">
         <div></div>
@@ -495,6 +486,7 @@
     </div>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/dropzone.js"></script>
     <script src="js/init.js"></script>
     <script src="js/cart.js"></script>

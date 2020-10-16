@@ -89,6 +89,18 @@ function mostrarCarrito(array) {
      localStorage[`guardarCantidad${i}`] = document.getElementById(`cantidad${i}`).value;
     }
     }
+
+    // Mostrar datos de envio y pago en div de resumen
+    let datosEnvio = localStorage.getItem('datosEnvios');
+    let datosPago = localStorage.getItem('datosPago')
+
+    if (datosEnvio != null) {
+    document.getElementById("infoEnvio").innerHTML = datosEnvio;
+  }
+
+  if (datosPago != null) {
+    document.getElementById("infoPago").innerHTML = datosPago;
+  }
 }
 
 // Función que se ejecuta al cambiar la cantidad de un producto, calcula el precio total del item
@@ -153,7 +165,42 @@ function calcularST() {
   document.getElementById("badgeCarrito").innerHTML = cdad;
 }
 
+// Activar botón de modal de transferencia bancaria
+function activarBoton(okCheckBox) {
+    
+    if(okCheckBox.checked){
+        document.getElementById("botonAceptarTransf").disabled = false;
+    }
+    else{
+        document.getElementById("botonAceptarTransf").disabled = true;
+    }
+}
 
+
+function guardarDatosEnvio() {
+  var datosEnvio = "";
+  var nombre = document.getElementById("inputNombre").value;
+  var apellido = document.getElementById("inputApellido").value;
+
+  datosEnvio = `<strong>Nombre:</strong>`+" "+ nombre +" "+ apellido;
+
+  localStorage.setItem('datosEnvios',datosEnvio);
+}
+
+function guardarDatosTarjeta() {
+  var datosTarjeta = "";
+
+  datosTarjeta = `<strong>Forma de pago:</strong>` + " " + "Tarjeta";
+  localStorage.setItem('datosPago',datosTarjeta);
+
+}
+
+function guardarDatosTransf() {
+  var datosTransf = "";
+
+  datosTransf = `<strong>Forma de pago:</strong>` + " " + "Transferencia";
+  localStorage.setItem('datosPago',datosTransf);
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -167,4 +214,62 @@ document.addEventListener("DOMContentLoaded", function (e) {
       calcularST();
     }
   });
+});
+
+
+// Función que larga alertas para finalizar compra
+document.getElementById('finalizarCompra').addEventListener('click', function (e) {
+let envioGuardado = document.getElementById('infoEnvio').innerHTML;
+let pagoGuardado = document.getElementById('infoPago').innerHTML;
+
+if (envioGuardado != "" && pagoGuardado != "") {
+  
+  swal({
+    title: "Felicidades!",
+    text: "Que disfrutes tu compra!",
+    icon: "success",
+    buttons: ["Volver a inicio", "Cerrar sesión"],
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    window.location.href = "index.html";
+    localStorage.clear();
+    
+  } else {
+    window.location = "portada.html";
+    localStorage.removeItem('cantidadTotal');
+    localStorage.removeItem('guardarCantidad0');
+    localStorage.removeItem('guardarCarrito');
+    localStorage.removeItem('guardarCantidad1');
+  }
+});
+}
+
+
+if (envioGuardado == "" && pagoGuardado != "") {
+  swal(
+    "No tan rápido!",
+    "Te olvidaste de ingresar tu información de envío!",
+    "error"
+  );
+}
+
+if (envioGuardado != "" && pagoGuardado == "") {
+  swal(
+    "No tan rápido!",
+    "Te olvidaste de elegir un método de pago!",
+    "error"
+  );
+}
+
+if (envioGuardado == "" && pagoGuardado == "") {
+  swal(
+    "No tan rápido!",
+    "Elije un método de pago e ingresa tu información de envío!",
+    "error"
+  );
+}
+
+
 });
