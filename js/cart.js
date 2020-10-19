@@ -11,7 +11,7 @@ function mostrarCarrito(array) {
     }
 
     listadoCarrito += ` 
-	<table class="table table-borderless table-shopping-cart">
+	<table class="table table-borderless table-shopping-cart" id="item${i}">
               <thead class="text-muted">
                 <tr class="small text-uppercase">
                   <th scope="col">Producto</th>
@@ -55,16 +55,16 @@ function mostrarCarrito(array) {
 					
 					</td>
 					<td class="text-right">
-					<a
+					<button
 						data-original-title="Save to Wishlist"
 						title=""
-						href="#"
+						
 						class="btn btn-light"
 						data-toggle="tooltip"
 					>
 						<i class="fa fa-heart"></i
-					></a>
-					<a href="#" class="btn btn-light"> <i class="fas fa-trash-alt"></i></a>
+					></button>
+					<button  class="btn btn-light" id="borrar${i}" onclick="borrarItem(${i});"> <i class="fas fa-trash-alt"></i></button>
 					</td>
 				</tr>
   </tbody>
@@ -75,9 +75,12 @@ function mostrarCarrito(array) {
    if (localStorage["guardarCarrito"] != null) {
     document.getElementById("itemsCarrito").innerHTML = JSON.parse(localStorage["guardarCarrito"]);
 
+    
     for (let i = 0; i < array.length; i++) {
+      if (localStorage[`guardarCantidad${i}`] != 0){
     document.getElementById(`cantidad${i}`).value = JSON.parse(localStorage[`guardarCantidad${i}`]);
     }
+  }
      } 
 
     //  Si no hay un carrito guardado en localStorage crea uno nuevo y lo guarda en localStorage
@@ -231,8 +234,8 @@ if (envioGuardado != "" && pagoGuardado != "") {
     buttons: ["Volver a inicio", "Cerrar sesión"],
   dangerMode: true,
 })
-.then((willDelete) => {
-  if (willDelete) {
+.then((cerrarSesion) => {
+  if (cerrarSesion) {
     window.location.href = "index.html";
     localStorage.clear();
     
@@ -273,3 +276,12 @@ if (envioGuardado == "" && pagoGuardado == "") {
 
 
 });
+
+// Función para borrar item del carrito
+function borrarItem(indice) {
+  document.getElementById(`item${indice}`).remove();
+  localStorage[`guardarCantidad${indice}`] = 0;
+  calcularST();
+  localStorage["guardarCarrito"] = JSON.stringify($("#itemsCarrito").html());
+};
+
