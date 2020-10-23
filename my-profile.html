@@ -1,106 +1,204 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <title>eMercado - Todo lo que busques está aquí</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <title>eMercado - Todo lo que busques está aquí</title>
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.3/examples/album/"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
-    }
-  </style>
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link href="css/dropzone.css" rel="stylesheet">
-</head>
 
-<body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div
-      class="container d-flex flex-column flex-md-row justify-content-between"
-    >
-      <a class="py-2 d-none d-md-inline-block" href="portada.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html"
-        >Categorías</a
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    </style>
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/dropzone.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav class="site-header sticky-top py-1 bg-dark">
+      <div
+        class="container d-flex flex-column flex-md-row justify-content-between"
       >
-      <a class="py-2 d-none d-md-inline-block" href="products.html"
-        >Productos</a
-      >
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      
-      <!-- menu desplegable para cerrar sesión -->
-      <div class="dropdown py-2 d-none d-md-inline-block">
-        <a
-          class="py-2 d-none d-md-inline-block badge badge-secondary align-self-center dropdown-toggle"
-          id="nombreUsuario"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="true"
-          href="#"
-        ></a>
-        <!--en init.js se asigna valor con getItem-->
-        <div class="dropdown-menu" aria-labelledby="nombreUsuario">
-          <a class="py-2 d-none d-md-inline-block dropdown-item" href="#"><i class="far fa-user"></i> Mi perfil</a>
-          <a class="py-2 d-none d-md-inline-block dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito <span class="badge badge-danger" id="badgeCarrito"></span></a>
-          <a id="cerrar" href="#" class="py-2 d-none d-md-inline-block dropdown-item"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+        <a class="py-2 d-none d-md-inline-block" href="portada.html">Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" href="categories.html"
+          >Categorías</a
+        >
+        <a class="py-2 d-none d-md-inline-block" href="products.html"
+          >Productos</a
+        >
+        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+
+        <!-- menu desplegable para cerrar sesión -->
+        <div class="dropdown py-2 d-none d-md-inline-block">
+          <a
+            class="py-2 d-none d-md-inline-block badge badge-secondary align-self-center dropdown-toggle"
+            id="nombreUsuario"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="true"
+            href="#"
+          ></a>
+          <!--en init.js se asigna valor con getItem-->
+          <div class="dropdown-menu" aria-labelledby="nombreUsuario">
+            <a class="py-2 d-none d-md-inline-block dropdown-item" href="#"
+              ><i class="far fa-user"></i> Mi perfil</a
+            >
+            <a
+              class="py-2 d-none d-md-inline-block dropdown-item"
+              href="cart.html"
+              ><i class="fas fa-shopping-cart"></i> Mi carrito
+              <span class="badge badge-danger" id="badgeCarrito"></span
+            ></a>
+            <a
+              id="cerrar"
+              href="#"
+              class="py-2 d-none d-md-inline-block dropdown-item"
+              ><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a
+            >
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/my-profile.js"></script>
-  
-</body>
+    </nav>
 
+    <div class="container p-5">
+      <div class="row">
+        <!-- Ingreso formulario -->
+        <div class="col-md-6">
+          <div class="card">
+            <h4 class="card-header bg-dark text-center text-white">
+              Ingresa tus datos
+            </h4>
+            <div class="card-body">
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputNombre">Nombre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputNombre"
+                      placeholder="Nombre"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputApellidos">Apellidos</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputApellidos"
+                      placeholder="Apellidos"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    placeholder="example@emercado.com"
+                  />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-2">
+                    <label for="inputEdad">Edad</label>
+                    <input type="number" class="form-control" id="inputEdad" />
+                  </div>
+                  <div class="form-group col-md-10">
+                    <label for="inputTelefono">Telefono de contacto</label>
+                    <input type="tel" class="form-control" id="inputTelefono" />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-warning btn-lg btn-block"
+                  id="botonGuardar"
+                  onclick="guardarDatos()"
+                >
+                  <i class="far fa-save"></i> Guardar mi perfil
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Fin formulario -->
+
+        <!-- Div para mostrar informacion de perfil -->
+        <div id="mostrarPerfil" class="col-md-6"></div>
+      </div>
+    </div>
+
+    <footer class="text-muted bg-light">
+      <div class="container">
+        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+        <p>
+          Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la
+          letra del obligatorio.
+        </p>
+      </div>
+    </footer>
+    <div class="alert fade alert-success" role="alert" id="alertResult">
+      <span id="resultSpan"></span>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/my-profile.js"></script>
+  </body>
 </html>
