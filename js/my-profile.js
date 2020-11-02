@@ -15,7 +15,7 @@ function guardarDatos() {
     <div class="row">
       <div class="col align-self-center text-center">
         <div>
-          <img src="img/homero.jpg" class="img-circle" />
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/QprtqP1/homero.jpg" alt="homero" border="0"></a>
         </div>
         <h3><strong>${nombre + " " + apellidos}</strong></h3>
       </div>
