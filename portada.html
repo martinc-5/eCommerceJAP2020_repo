@@ -24,23 +24,38 @@
     <link href="css/styles.css" rel="stylesheet" />
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-      <div
-        class="container d-flex flex-column flex-md-row justify-content-between"
-      >
-        <a class="py-2 d-none d-md-inline-block" href="portada.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html"
+    <nav class="navbar navbar-expand-sm site-header sticky-top py-1 navbar-dark bg-dark">
+      <a class="navbar-brand" href="portada.html">
+        <img src="img/logo-ceibal.png" style="max-height: 40px;" alt="logo">
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navBar" style="">
+        <ul class="navbar-nav mr-auto nav-fill w-100">
+          <li class="nav-item ">
+            <a class="nav-link active" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html"
           >Categorías</a
         >
-        <a class="py-2 d-none d-md-inline-block" href="products.html"
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html"
           >Productos</a
         >
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        
-        <!-- menu desplegable para cerrar sesión -->
-        <div class="dropdown py-2 d-none d-md-inline-block">
-          <a
-            class="py-2 d-none d-md-inline-block badge badge-secondary align-self-center dropdown-toggle"
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html"
+          >Vender</a
+        >
+          </li>
+
+          <li class="nav-item dropdown">
+              <a
+            class="nav-link dropdown-toggle"
             id="nombreUsuario"
             data-toggle="dropdown"
             aria-haspopup="true"
@@ -49,11 +64,25 @@
           ></a>
           <!--en init.js se asigna valor con getItem-->
           <div class="dropdown-menu" aria-labelledby="nombreUsuario">
-            <a class="py-2 d-none d-md-inline-block dropdown-item" href="my-profile.html"><i class="far fa-user"></i> Mi perfil</a>
-            <a class="py-2 d-none d-md-inline-block dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito <span class="badge badge-danger" id="badgeCarrito"></span></a>
-            <a id="cerrar" href="#" class="py-2 d-none d-md-inline-block dropdown-item"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            <a class="py-2 d-md-inline-block dropdown-item" href="my-profile.html"
+              ><i class="far fa-user"></i> Mi perfil</a
+            >
+            <a
+              class="py-2 d-md-inline-block dropdown-item"
+              href="cart.html"
+              ><i class="fas fa-shopping-cart"></i> Mi carrito
+              <span class="badge badge-danger" id="badgeCarrito"></span
+            ></a>
+            <a
+              id="cerrar"
+              href="#"
+              class="py-2  d-md-inline-block dropdown-item"
+              ><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a
+            >
           </div>
-        </div>
+
+          </li>
+        </ul>
       </div>
     </nav>
     <main role="main">
