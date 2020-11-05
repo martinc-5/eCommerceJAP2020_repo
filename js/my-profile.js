@@ -7,6 +7,12 @@ function guardarDatos() {
   var edad = document.getElementById("inputEdad").value;
   var email = document.getElementById("inputEmail").value;
   var telefono = document.getElementById("inputTelefono").value;
+  var imagen = document.getElementById("inputImagen").value;
+
+  if (imagen == "") {
+    imagen = "https://i.ibb.co/zVSfVQB/avatar.jpg"
+  }
+
 
   perfil += `
   <div class="card">
@@ -15,7 +21,7 @@ function guardarDatos() {
     <div class="row">
       <div class="col align-self-center text-center">
         <div>
-        <a href="https://imgbb.com/"><img src="https://i.ibb.co/QprtqP1/homero.jpg" alt="homero" border="0"></a>
+        <img src="${imagen}" alt="foto de perfil" border="0" style="max-width:200px;width:100%">
         </div>
         <h3><strong>${nombre + " " + apellidos}</strong></h3>
       </div>
